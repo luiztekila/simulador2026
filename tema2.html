@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <script src="index.js">
+        //llamando funciones
+    </script>
+</head>
+
+<body onload="contarLineas() ; copiarLinea() ">
+
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg" style="background-color: #7eb9e4;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Contacto LVV </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href='principal.html'>Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ayuda</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+              Simulador de Exámen de Ascenso 2026
+            </span>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+    <center>
+        <h3><u>Tema N° 2 : Derechos Humanos (201 al 230)</u></h3>
+        </br>
+          <button onclick="leerparrafos()"> -- Leer todo -- </button>
+    </center>
+
+    <div class="container-fluid mt-2 ">
+
+        <div class="row">
+            <div class="col-2">
+                <img src="img/atras.jpg" onclick="atras()">
+            </div>
+            <div class="col-8  px-0">
+                <p id="parra1" style="line-height:1.1"> </p>
+            </div>
+            <div class="col-1">
+                <img src="img/sig.jpg" onclick="siguiente()">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
+        <div class="row">
+            <div class="col-1">A. </div>
+            <div class="col-8  px-0">
+                
+                <p id="parra2" style="line-height:1.1;"></p>
+            </div>
+            <div class="col-1">
+                </br>
+                <input type="radio" id="radio" name="opcion" value="A" onclick="responder()">
+            </div>
+            <div class="col-1"> <img id="imagen1" src=""> </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
+        <div class="row">
+            <div class="col-1">B. </div>
+            <div class="col-8  px-0">
+                <p id="parra3" style="line-height:1.1;"></p>
+            </div>
+            <div class="col-1">
+                </br>
+                <input type="radio" id="radio" name="opcion" value="B" onclick="responder()">
+            </div>
+            <div class="col-1"> <img id="imagen2" src=""> </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
+        <div class="row">
+            <div class="col-1">C. </div>
+            <div class="col-8  px-0">
+                <p id="parra4" style="line-height:1.1;"></p>
+            </div>
+            <div class="col-1">
+                </br>
+                <input type="radio" id="radio" name="opcion" value="C" onclick="responder()">
+            </div>
+            <div class="col-1"> <img id="imagen3" src=""> </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
+        <div class="row">
+            <div class="col-1">D. </div>
+            <div class="col-8  px-0">
+                <p id="parra5" style="line-height:1.1;"></p>
+            </div>
+            <div class="col-1">
+                </br>
+                <input type="radio" id="radio" name="opcion" value="D" onclick="responder()">
+            </div>
+            <div class="col-1"> <img id="imagen4" src=""> </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
+        <div class="row">
+            <div class="col-1">E. </div>
+            <div class="col-8  px-0">
+                <p id="parra6" style="line-height:1.1;"></p>
+            </div>
+            <div class="col-1">
+                </br>
+                <input type="radio" id="radio" name="opcion" value="E" onclick="responder()">
+            </div>
+            <div class="col-1"> <img id="imagen5" src=""> </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-2" style="background-color: #c2d8e7;" hidden="none">
+        <div class="row">
+            <div class="col-1">R. </div>
+            <div class="col-8  px-0">
+                <p id="parra7" style="line-height:1.1;"></p>
+            </div>
+        </div>
+    </div>
+    <div>
+      <h5> <u>Resultados:</u></h5>
+        <h5 id="verbuenas" style="color:  #0C5F29;"> Buenas:</h5>
+        <h5 id="vermalas" style="color:  #F1290D;"> Malas:</h5>
+        <h6> Se mostrarán las preguntas mal respondidas - Se sugiere volver a repasarlas:</h6>
+        <h5 id="malucas"> </h5>
+        </p>
+    </div>
+    <div>
+        <p id="respuesta" hidden="none"></p>
+        <p id="seleccion"></p>
+        <p id="verbandera"></p>
+        <textarea id="txtArea" cols="50" hidden="none">
+201 TODA PERSONA TIENE DEBERES RESPECTO A LA COMUNIDAD, PUESTO QUE SÓLO EN ELLA PUEDE DESARROLLAR LIBRE Y PLENAMENTE SU:.
+INTEGRIDAD.
+PERSONALIDAD.
+IDENTIDAD.
+TEMPERAMENTO
+CARÁCTER.
+PERSONALIDAD.
+UBICACIÓN: ART:
+CÓDIGO:181052
+.
+202. TODO INDIVIDUO TIENE DERECHO A RECIBIR INFORMACIONES Y OPINIONES, Y EL DE DIFUNDIRLAS, SIN LIMITACIÓN DE FRONTERAS, UTILIZANDO:.
+LA PRENSA ESCRITA.
+LA RADIO Y TELEVISIÓN.
+EL INTERNET.
+CUALQUIER MEDIO DE EXPRESIÓN.
+LA PRENSA ESCRITA, LA RADIO Y EL INTERNET.
+CUALQUIER MEDIO DE EXPRESIÓN.
+UBICACIÓN: ART: 
+CÓDIGO:181053
+.
+203 LA DECLARACIÓN UNIVERSAL DE LOS DERECHOS HUMANOS, INDICA QUE A NADIE SE LE PRIVARA ARBITRARIAMENTE DE SU NACIONALIDAD NI:
+DEL DERECHO DE CAMBIAR DE NACIONALIDAD.
+DEL PASAPORTE DIPLOMÁTICO.
+DEL DERECHO DE ASILO 
+DEL DERECHO DE MATRIMONIO Y FAMILIA.
+DEL DERECHO DE SER DESTERRADO.
+DEL DERECHO DE CAMBIAR DE NACIONALIDAD.
+ UBICACIÓN. (ART: 
+CÓDIGO.181054
+.
+204. LA FAMILIA ES EL ELEMENTO NATURAL Y FUNDAMENTAL DE LA:.
+SOCIEDAD.
+PATRIA 
+INSTITUCIÓN. 
+NACIÓN.
+COMUNIDAD.
+SOCIEDAD.
+UBICACIÓN. (ART: 
+CÓDIGO:181055
+.
+205 LA VOLUNTAD DEL PUEBLO ES LA BASE DE LA AUTORIDAD DEL PODER PÚBLICO; ESTA VOLUNTAD SE EXPRESARÁ MEDIANTE ELECCIONES AUTÉNTICAS QUE HABRÁN DE CELEBRARSE
+PERIÓDICAMENTE
+SEMANALMENTE
+CUANDO LO DISPONGA EL PRESIDENTE
+DOS VECES AL AÑO
+UNA VEZ AL AÑO
+PERIÓDICAMENTE
+UBICACIÓN(ART: 21 
+CÓDIGO.181056
+.
+206.TODA PERSONA, COMO MIEMBRO DE LA SOCIEDAD, TIENE DERECHO:.
+A LA SEGURIDAD SOCIAL.
+AL SEGURO DE VIDA. 
+A LA SALUD.
+A LA SEGURIDAD PERSONAL.
+A LA SEGURIDAD PÚBLICA.
+A LA SEGURIDAD SOCIAL.
+UBICACIÓN: (ART: 
+CÓDIGO.181057
+.
+207.NADIE SERÁ CONDENADO POR ACTOS U OMISIONES QUE EN EL MOMENTO DE COMETERSE:.
+SE ENCONTRABAN SANCIONADOS.
+SE CONSIDERABAN DELITOS.
+NO FUERON DELICTIVOS.
+SEGÚN INTERPRETACIÓN DEL MINISTERIO PÚBLICO 
+ DE CONFORMIDAD A DISPOSICIÓN SUPERIOR.
+NO FUERON DELICTIVOS.
+UBICACIÓN. (ART: 
+CÓDIGO.181058
+.
+208. TODA PERSONA TIENE DERECHO, A SER OÍDA PÚBLICAMENTE Y CON JUSTICIA POR UN TRIBUNAL INDEPENDIENTE E IMPARCIAL, PARA EL EXAMEN DE CUALQUIER ACUSACIÓN CONTRA ELLA EN:.
+MATERIA PENAL.
+MATERIA CIVIL.
+MATERIA CONSTITUCIONAL.
+MATERIA LABORAL.
+MATERIA DISCIPLINARIA.
+MATERIA PENAL.
+UBICACIÓN: (ART:
+ CÓDIGO:181059
+.
+209 PARA QUE LOS DERECHOS Y LIBERTADES PROCLAMADOS EN ESTA DECLARACIÓN SE HAGAN PLENAMENTE EFECTIVOS, TODA PERSONA TIENE DERECHO A QUE SE ESTABLEZCA UN ORDEN:.
+SOCIAL E INTERNACIONAL.
+LEGAL Y SOCIAL 
+MILITAR Y POLICIAL.
+CIVIL Y POLÍTICO 
+SOCIAL Y ECONÓMICO.
+SOCIAL E INTERNACIONAL.
+ UBICACIÓN(ART: 
+CÓDIGO181060
+.
+210. EL ACCESO A LOS ESTUDIOS SUPERIORES SERA IGUAL PARA TODOS, EN FUNCIÓN DE LOS:.
+MÉRITOS ALCANZADOS 
+MÉRITOS LOGRADOS 
+CERTIFICADOS DE ESTUDIOS.
+MÉRITOS OBTENIDOS 
+MÉRITOS RESPECTIVOS.
+MÉRITOS RESPECTIVOS.
+ UBICACIÓN: (ART: 
+CÓDIGO:181061
+.
+211 TODA PERSONA TIENE DERECHO A SALIR DE CUALQUIER:.
+PAÍS.
+LUGAR.
+DEPARTAMENTO.
+REGIÓN.
+REPÚBLICA.
+PAÍS.
+UBICACIÓN: (ART:
+CÓDIGO:181062
+.
+212.LA MATERNIDAD Y LA INFANCIA TIENEN DERECHO A CUIDADOS Y ASISTENCIA ESPECIALES. TODOS LOS NIÑOS, NACIDOS DE MATRIMONIO O FUERA DE MATRIMONIO, TIENEN DERECHO.
+JURÍDICOS
+ECONÓMICOS
+SOCIALES
+CULTURALES
+IGUAL PROTECCIÓN SOCIAL
+IGUAL PROTECCIÓN SOCIAL
+UBICACION
+CÓDIGO:181063
+.
+213.TODA PERSONA TIENE DERECHO AL TRABAJO, A LA LIBRE ELECCIÓN DE SU TRABAJO, A CONDICIONES EQUITATIVAS Y SATISFACTORIAS DE TRABAJO Y A LA PROTECCIÓN CONTRA:.
+EL DESEMPLEO 
+SALARIO.
+REMUNERACIÓN.
+HORARIO.
+DESCANSO.
+EL DESEMPLEO 
+UBICACIÓN: (ART: 
+CÓDIGO:181064
+.
+214 TODA PERSONA TIENE DERECHO A LA LIBERTAD DE MANIFESTAR SU RELIGIÓN O SU CREENCIA, INDIVIDUAL Y COLECTIVAMENTE, TANTO EN PÚBLICO COMO EN PRIVADO, POR LA:.
+EDUCACIÓN.
+DIFUSIÓN.
+PREPARACIÓN.
+ENSEÑANZA.
+CATEQUESIS.
+ENSEÑANZA.
+ UBICACIÓN. (ART: 
+CÓDIGO.181065
+.
+215. TODA PERSONA TIENE DERECHO AL TRABAJO, A LA LIBRE ELECCIÓN DE SU TRABAJO, A CONDICIONES EQUITATIVAS Y SATISFACTORIAS DE TRABAJO Y A LA PROTECCIÓN CONTRA:.
+EL DESEMPLEO.
+EL PROTECCIONISMO.
+EL DESEMPEÑO.
+LA DESOCUPACIÓN.
+EL PARO LABORAL.
+EL DESEMPLEO.
+ UBICACIÓN: (ART: 
+CÓDIGO:181066
+.
+216 TODO INDIVIDUO TIENE DERECHO A LA VIDA, A LA LIBERTAD Y A LA:.
+SEGURIDAD DE SU PERSONA.
+INTEGRIDAD PERSONAL.
+COMUNIDAD.
+VIDA FAMILIAR.
+SEGURIDAD INTEGRAL.
+SEGURIDAD DE SU PERSONA.
+UBICACIÓN(ART: 3) 
+CÓDIGO.181067
+.
+217. TODA PERSONA TIENE DERECHO A LA PROTECCIÓN DE LOS INTERESES MORALES Y MATERIALES QUE LE CORRESPONDAN POR RAZÓN DE:.
+LAS PRODUCCIONES TEMÁTICAS 
+SU EDUCACIÓN.
+SUS CONOCIMIENTOS.
+LAS PRODUCCIONES CIENTÍFICAS, LITERARIAS O ARTÍSTICAS DE QUE SEA AUTORA.
+LAS PRODUCCIONES ACADÉMICAS.
+LAS PRODUCCIONES CIENTÍFICAS, LITERARIAS O ARTÍSTICAS DE QUE SEA AUTORA.
+UBICACIÓN: (ART: 
+CÓDIGO:181068
+.
+218 ANTE LOS TRIBUNALES NACIONALES COMPETENTES, QUE LA AMPARE CONTRA ACTOS QUE VIOLEN SUS DERECHOS FUNDAMENTALES RECONOCIDOS POR LA CONSTITUCIÓN O POR LA LEY, TODA PERSONA TIENE DERECHO A UN RECURSO:.
+DE AMPARO. 
+EFECTIVO.
+DE HÁBEAS CORPUS 
+ORDINARIO.
+DE HÁBEAS DATA.
+EFECTIVO.
+UBICACIÓN: (ART: 
+CÓDIGO181069
+.
+219. NADIE PODRÁ SER ARBITRARIAMENTE:.
+DISCRIMINADO, NI MARGINADO.
+CAPTURADO, INCOMUNICADO, NI DISCRIMINADO.
+INHABILITADO, NI INCRIMINADO.
+INDULTADO
+DETENIDO, PRESO NI DESTERRADO.
+DETENIDO, PRESO NI DESTERRADO.
+ UBICACIÓN. (ART: 
+CÓDIGO:181070
+.
+220 TODOS LOS SERES HUMANOS DEBEN FRATERNALMENTE _______ LOS UNOS CON LOS OTROS.
+HABLAR.
+PERMANECER.
+COMPORTARSE.
+EXPRESARSE.
+COMUNICARSE.
+COMPORTARSE.
+UBICACIÓN: (ART:
+CÓDIGO:181071
+.
+221.NADA EN ESTA DECLARACIÓN PODRÁ INTERPRETARSE EN EL SENTIDO DE QUE CONFIERE DERECHO ALGUNO:
+A LAS FUERZAS ARMADAS 
+A LA AUTORIDAD JUDICIAL
+AL CONGRESO
+AL ESTADO
+A LA POLICÍA NACIONAL 
+AL ESTADO
+UBICACIÓN. (ART:
+CÓDIGO181072
+.
+222.TODA PERSONA TIENE DERECHO AL DESCANSO, AL DISFRUTE DEL TIEMPO LIBRE, A UNA LIMITACIÓN RAZONABLE DE LA DURACIÓN DEL TRABAJO Y A:
+COMISIONES PERIÓDICAS PAGADAS 
+VACACIONES PERIÓDICAS PAGADAS
+FESTIVIDADES ANUALES PAGADAS
+PASEOS PERIÓDICOS PAGADOS
+ACTIVIDADES PERIÓDICAS PAGADAS
+VACACIONES PERIÓDICAS PAGADAS
+ UBICACIÓN: (ART:
+CÓDIGO:181073
+.
+223.TODOS TIENEN DERECHO A IGUAL PROTECCIÓN CONTRA TODA DISCRIMINACIÓN QUE INFRINJA ESTA DECLARACIÓN, CORRESPONDE A:
+IGUALDAD ANTE LA LEY
+IGUALDAD ANTE LOS TRATADOS
+PROHIBICIÓN DE LA ARBITRARIEDAD
+PLENITUD DE LOS DERECHOS Y LIBERTADES
+DERECHO DE IGUAL PROTECCIÓN 
+IGUALDAD ANTE LA LEY
+UBICACIÓN: (ART: 
+CÓDIGO.181074
+.
+224 EN UNA ASOCIACIÓN, NADIE PODRÁ SER OBLIGADO A:
+PERTENECER
+PARTICIPAR
+EXCLUIRSE 
+INDEPENDIZARSE
+SEPARARSE
+PERTENECER
+UBICACIÓN: (ART: 
+CÓDIGO.181075
+.
+225. TODA PERSONA TIENE DERECHO A LA PROPIEDAD:
+GRUPAL Y COLECTIVAMENTE
+INDIVIDUAL Y COLECTIVAMENTE
+GRUPAL Y PARTICULAR
+INDIVIDUAL Y MIXTA
+PRIVADA Y ASOCIADA
+INDIVIDUAL Y COLECTIVAMENTE
+UBICACIÓN: (ART: 
+CÓDIGO:181076
+.
+226 LA ESCLAVITUD Y LA TRATA DE ESCLAVOS ESTÁN: 
+PROHIBIDAS EN TODAS SUS FORMAS
+PROHIBIDAS
+PROHIBIDAS SUS MODALIDADES
+PROHIBIDAS EN ALGUNOS LUGARES
+PROHIBIDAS EN TODAS SUS MODALIDADES
+PROHIBIDAS EN TODAS SUS FORMAS
+UBICACIÓN. (ART. 
+CÓDIGO:181077
+.
+227. TODO SER HUMANO TIENE DERECHO AL RECONOCIMIENTO DE SU PERSONALIDAD JURÍDICA:
+EN TODAS PARTES
+EN EL PAÍS
+EN EL EXTRANJERO
+EN SU COMUNIDAD
+EN EL PAÍS
+EN TODAS PARTES
+ UBICACIÓN: (ART: 
+CÓDIGO181078
+.
+228. NADIE SERA OBJETO DE INJERENCIAS ARBITRARIAS EN SU:
+DOMICILIO
+SU CASA
+SU VIVIENDA
+SU CENTRO DE LABORES
+SU TRABAJO
+DOMICILIO
+ UBICACIÓN: (ART: 
+CÓDIGO:181079
+.
+229. TODA PERSONA TIENE DERECHO A BUSCAR ASILO, EN CASO DE:
+PERSECUCIÓN
+HOSTIGAMIENTO
+SECUESTRO
+AMENAZA
+DELITO COMUNES
+PERSECUCIÓN
+ UBICACIÓN(ART:
+CÓDIGO.181080
+.
+230. TODA PERSONA TIENE TODOS LOS DERECHOS Y LIBERTADES PROCLAMADOS EN ESTA DECLARACIÓN, SIN DISTINCIÓN ALGUNA DE:
+RAZA
+ORIGEN
+CULTURA 
+ETNIA
+EL MEDIO SOCIAL
+RAZA
+UBICACIÓN: (ART: 
+CÓDIGO:181081
+.
+ </textarea></div>
+</body>
+
+</html>
