@@ -1,153 +1,320 @@
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Prepárate para Ascender</title>
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.css" />
-    <script src="index.js">
-        //llamando funciones
-    </script>
+
+    <!-- Estilos PNP -->
+    <link rel="stylesheet" href="css/estilos-pnp.css" />
+
+    <!-- JS existente -->
+    <script src="js/index.js"></script>
 </head>
 
-<body onload="contarLineas() ; copiarLinea() ">
+<body onload="contarLineas(); copiarLinea();">
 
-    <div class="container-fluid">
+    <!-- =========================
+         FONDO DECORATIVO
+    ========================== -->
+    <div class="fondo-pnp"></div>
 
-        <nav class="navbar navbar-expand-lg" style="background-color: #7eb9e4;">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Contacto LVV </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href='principal.html'>Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Ayuda</a>
-                        </li>
-                    </ul>
-                    <span class="navbar-text">
-              Simulador de Exámen de Ascenso 2026
-            </span>
+    <!-- =========================
+         HEADER SUPERIOR
+    ========================== -->
+    <header class="header-pnp">
+        <div class="container-fluid px-0">
+            <nav class="navbar navbar-expand-lg navbar-pnp">
+                <div class="container-fluid">
+                    <a class="navbar-brand brand-pnp" href="#">
+                        <div class="brand-logo">
+                            <img src="img/escudo-pnp.png" alt="Escudo PNP" onerror="this.style.display='none'">
+                        </div>
+                        <div class="brand-texto">
+                            <span class="brand-lvv">CONTACTO LVV</span>
+                            <small>Simulador de Examen de Ascenso 2026</small>
+                        </div>
+                    </a>
+
+                    <button class="navbar-toggler navbar-toggler-pnp" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-pnp">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="principal.html">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ayuda.html">Ayuda</a>
+                            </li>
+                        </ul>
+
+                        <div class="header-lema">
+                            <div class="lema-principal">DIOS • PATRIA • LEY</div>
+                            <div class="lema-secundario">¡Disciplina, Honor y Servicio!</div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =========================
+         CONTENEDOR GENERAL
+    ========================== -->
+    <main class="contenedor-simulador">
+
+        <!-- =========================
+             CABECERA DEL TEMA
+        ========================== -->
+        <section class="panel panel-tema">
+            <div class="tema-lateral">
+                <img src="img/escudo-pnp.png" alt="Escudo PNP" onerror="this.style.display='none'">
+            </div>
+
+            <div class="tema-centro">
+                <div class="tema-badge">★ • TEMA N.° 1 • ★</div>
+                <h1>
+                    Constitución Política del Perú y modificatorias
+                    <span>(1 al 100)</span>
+                </h1>
+            </div>
+
+            <div class="tema-lateral tema-lateral-right">
+                <img src="img/escudo-pnp.png" alt="Escudo PNP" onerror="this.style.display='none'">
+            </div>
+        </section>
+
+        <!-- =========================
+             PANEL DE CONTROLES
+        ========================== -->
+        <section class="panel panel-controles">
+            <div class="controles-izq">
+                <label class="check-custom">
+                    <input type="checkbox" id="evaluarcheck" onchange="micheck(this)">
+                    <span class="check-box"></span>
+                    <span class="check-texto">Solo repasar <small>(ver respuestas)</small></span>
+                </label>
+            </div>
+
+            <div class="controles-centro">
+                <button class="btn-pnp btn-audio-verde" onclick="leerparrafos()">
+                    <span class="icono-btn">🔊</span> MODO AUDIO
+                </button>
+
+                <button class="btn-pnp btn-audio-rojo" onclick="detenerlectura()">
+                    <span class="icono-btn">🔇</span> NO AUDIO
+                </button>
+
+                <!-- NUEVO: botón repasar malas -->
+                <button id="btnRepasarMalas" class="btn-pnp btn-repaso-malas" onclick="repasarMalas()" style="display:none;">
+                    <span class="icono-btn">📘</span> REPASAR MALAS
+                </button>
+
+                <!-- NUEVO: salir repaso -->
+                <button id="btnSalirRepaso" class="btn-pnp btn-salir-repaso" onclick="salirRepasoMalas()" style="display:none;">
+                    <span class="icono-btn">↩</span> SALIR REPASO
+                </button>
+            </div>
+
+            <div class="controles-der">
+                <div class="marca-pnp">PNP</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PANEL CONTADOR / PROGRESO
+        ========================== -->
+        <section class="panel panel-progreso">
+            <div class="progreso-bloque progreso-bloque-izq">
+                <span class="lbl-progreso">Pregunta actual</span>
+                <h4 id="contadorPreguntas">1 / 200</h4>
+            </div>
+
+            <div class="progreso-bloque progreso-bloque-centro">
+                <div class="barra-progreso">
+                    <div id="barraPreguntas" class="barra-progreso-fill"></div>
                 </div>
             </div>
-        </nav>
 
-    </div>
-    <center>
-        <h3><u>Tema N° 2 : Derechos Humanos (201 al 230)</u></h3>
-        </br>
-          <button onclick="leerparrafos()"> -- Leer todo -- </button>
-    </center>
+            <div class="progreso-bloque progreso-bloque-der">
+                <span class="lbl-progreso">Progreso</span>
+                <h4 id="porcentajePreguntas">0%</h4>
+            </div>
+        </section>
 
-    <div class="container-fluid mt-2 ">
+        <!-- =========================
+             PREGUNTA PRINCIPAL
+        ========================== -->
+        <section class="panel panel-pregunta">
+            <div class="pregunta-nav pregunta-nav-left">
+                <button class="btn-nav-pregunta" onclick="atras()">
+                    <span class="flecha-nav">←</span>
+                </button>
+                <div class="texto-nav">ANTERIOR</div>
+            </div>
 
-        <div class="row">
-            <div class="col-2">
-                <img src="img/atras.jpg" onclick="atras()">
+            <div class="pregunta-texto">
+                <p id="parra1"></p>
             </div>
-            <div class="col-8  px-0">
-                <p id="parra1" style="line-height:1.1"> </p>
-            </div>
-            <div class="col-1">
-                <img src="img/sig.jpg" onclick="siguiente()">
-            </div>
-        </div>
-    </div>
 
-    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
-        <div class="row">
-            <div class="col-1">A. </div>
-            <div class="col-8  px-0">
-                
-                <p id="parra2" style="line-height:1.1;"></p>
+            <div class="pregunta-nav pregunta-nav-right">
+                <button class="btn-nav-pregunta" onclick="siguiente()">
+                    <span class="flecha-nav">→</span>
+                </button>
+                <div class="texto-nav">SIGUIENTE</div>
             </div>
-            <div class="col-1">
-                </br>
-                <input type="radio" id="radio" name="opcion" value="A" onclick="responder()">
-            </div>
-            <div class="col-1"> <img id="imagen1" src=""> </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
-        <div class="row">
-            <div class="col-1">B. </div>
-            <div class="col-8  px-0">
-                <p id="parra3" style="line-height:1.1;"></p>
-            </div>
-            <div class="col-1">
-                </br>
-                <input type="radio" id="radio" name="opcion" value="B" onclick="responder()">
-            </div>
-            <div class="col-1"> <img id="imagen2" src=""> </div>
-        </div>
-    </div>
-    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
-        <div class="row">
-            <div class="col-1">C. </div>
-            <div class="col-8  px-0">
-                <p id="parra4" style="line-height:1.1;"></p>
-            </div>
-            <div class="col-1">
-                </br>
-                <input type="radio" id="radio" name="opcion" value="C" onclick="responder()">
-            </div>
-            <div class="col-1"> <img id="imagen3" src=""> </div>
-        </div>
-    </div>
-    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
-        <div class="row">
-            <div class="col-1">D. </div>
-            <div class="col-8  px-0">
-                <p id="parra5" style="line-height:1.1;"></p>
-            </div>
-            <div class="col-1">
-                </br>
-                <input type="radio" id="radio" name="opcion" value="D" onclick="responder()">
-            </div>
-            <div class="col-1"> <img id="imagen4" src=""> </div>
-        </div>
-    </div>
+        <!-- =========================
+             OPCIONES
+        ========================== -->
 
-    <div class="container-fluid mt-2" style="background-color:  hsl(203, 37%, 88%);">
-        <div class="row">
-            <div class="col-1">E. </div>
-            <div class="col-8  px-0">
-                <p id="parra6" style="line-height:1.1;"></p>
+        <!-- A -->
+        <section class="opcion-card opcion-a">
+            <div class="opcion-letra">A.</div>
+            <div class="opcion-contenido">
+                <p id="parra2"></p>
             </div>
-            <div class="col-1">
-                </br>
-                <input type="radio" id="radio" name="opcion" value="E" onclick="responder()">
+            <div class="opcion-radio">
+                <input type="radio" name="opcion" value="A" onclick="responder()">
             </div>
-            <div class="col-1"> <img id="imagen5" src=""> </div>
-        </div>
-    </div>
+            <div class="opcion-estado">
+                <img id="imagen1" src="" alt="">
+            </div>
+        </section>
 
-    <div class="container-fluid mt-2" style="background-color: #c2d8e7;" hidden="none">
-        <div class="row">
-            <div class="col-1">R. </div>
-            <div class="col-8  px-0">
-                <p id="parra7" style="line-height:1.1;"></p>
+        <!-- B -->
+        <section class="opcion-card opcion-b">
+            <div class="opcion-letra">B.</div>
+            <div class="opcion-contenido">
+                <p id="parra3"></p>
             </div>
-        </div>
-    </div>
-    <div>
-      <h5> <u>Resultados:</u></h5>
-        <h5 id="verbuenas" style="color:  #0C5F29;"> Buenas:</h5>
-        <h5 id="vermalas" style="color:  #F1290D;"> Malas:</h5>
-        <h6> Se mostrarán las preguntas mal respondidas - Se sugiere volver a repasarlas:</h6>
-        <h5 id="malucas"> </h5>
-        </p>
-    </div>
-    <div>
-        <p id="respuesta" hidden="none"></p>
-        <p id="seleccion"></p>
-        <p id="verbandera"></p>
+            <div class="opcion-radio">
+                <input type="radio" name="opcion" value="B" onclick="responder()">
+            </div>
+            <div class="opcion-estado">
+                <img id="imagen2" src="" alt="">
+            </div>
+        </section>
+
+        <!-- C -->
+        <section class="opcion-card opcion-c">
+            <div class="opcion-letra">C.</div>
+            <div class="opcion-contenido">
+                <p id="parra4"></p>
+            </div>
+            <div class="opcion-radio">
+                <input type="radio" name="opcion" value="C" onclick="responder()">
+            </div>
+            <div class="opcion-estado">
+                <img id="imagen3" src="" alt="">
+            </div>
+        </section>
+
+        <!-- D -->
+        <section class="opcion-card opcion-d">
+            <div class="opcion-letra">D.</div>
+            <div class="opcion-contenido">
+                <p id="parra5"></p>
+            </div>
+            <div class="opcion-radio">
+                <input type="radio" name="opcion" value="D" onclick="responder()">
+            </div>
+            <div class="opcion-estado">
+                <img id="imagen4" src="" alt="">
+            </div>
+        </section>
+
+        <!-- E -->
+        <section class="opcion-card opcion-e">
+            <div class="opcion-letra">E.</div>
+            <div class="opcion-contenido">
+                <p id="parra6"></p>
+            </div>
+            <div class="opcion-radio">
+                <input type="radio" name="opcion" value="E" onclick="responder()">
+            </div>
+            <div class="opcion-estado">
+                <img id="imagen5" src="" alt="">
+            </div>
+        </section>
+
+        <!-- =========================
+             RESPUESTA / EXPLICACIÓN
+        ========================== -->
+       <section class="panel panel-respuesta" id="bloqueRespuesta" style="display: none;">
+            <div class="respuesta-icono">R.</div>
+            <div class="respuesta-texto">
+                <div class="respuesta-titulo">Respuesta correcta:</div>
+                <p id="parra7"></p>
+            </div>
+        </section>
+
+        <!-- =========================
+             RESULTADOS
+        ========================== -->
+        <section class="panel panel-resultados">
+            <div class="resultado-escudo">
+                <img src="img/escudo-pnp.png" alt="Escudo PNP" onerror="this.style.display='none'">
+            </div>
+
+            <div class="resultado-marcadores">
+                <h3>RESULTADOS</h3>
+
+                <div class="marcador-item marcador-buenas">
+                    <span class="marcador-label">Buenas:</span>
+                    <span id="verbuenas">0</span>
+                </div>
+
+                <div class="marcador-item marcador-malas">
+                    <span class="marcador-label">Malas:</span>
+                    <span id="vermalas">0</span>
+                </div>
+
+                <div class="marcador-item marcador-extra">
+                    <span class="marcador-label">Preguntas falladas:</span>
+                    <span id="malucas"></span>
+                </div>
+            </div>
+
+            <div class="resultado-frase">
+                <p>La constancia es la clave para alcanzar tus metas.</p>
+                <strong>¡TÚ PUEDES, GRAN SUBOFICIAL!</strong>
+            </div>
+        </section>
+
+        <!-- =========================
+             PANEL INFERIOR
+        ========================== -->
+        <section class="panel panel-info-final">
+            <div class="info-columna info-respuesta">
+                <h4>VER RESPUESTA:</h4>
+                <div class="caja-respuesta">
+                    <p id="respuesta" hidden></p>
+                </div>
+            </div>
+
+            <div class="info-columna info-estado">
+                <div class="dato-estado">
+                    <span class="dato-label">Tu selección:</span>
+                    <strong id="seleccion"></strong>
+                </div>
+                <div class="dato-estado">
+                    <span class="dato-label">Estado:</span>
+                    <strong id="verbandera"></strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- textarea oculto -->
+    
         <textarea id="txtArea" cols="50" hidden="none">
 1. TODA PERSONA TIENE DERECHO: A ELEGIR SU LUGAR DE RESIDENCIA, A TRANSITAR POR EL TERRITORIO NACIONAL Y A SALIR DE ÉL Y ENTRAR EN ÉL, SALVO LIMITACIONES POR:
 RAZONES DE SEGURIDAD PREVIA RESOLUCIÓN FISCAL Y EN APLICACIÓN DE LA LEY DE EXTRANJERÍA.
