@@ -198,6 +198,14 @@ function copiarLinea() {
     document.getElementById('imagen4').src = "";
     document.getElementById('imagen5').src = "";
 
+   var tarjetas = document.querySelectorAll('.opcion-card');
+
+tarjetas.forEach(function(tarjeta) {
+    tarjeta.classList.remove(
+        'respuesta-correcta',
+        'respuesta-incorrecta'
+    );
+});
     // contador según el modo
     if (modoRepasoMalas) {
         actualizarContadorPregunta(indiceRepaso + 1, preguntasMalas.length);
@@ -211,81 +219,67 @@ function copiarLinea() {
 ========================================= */
 var responder = function(opcion) {
 
-    var imag1 = document.getElementById('imagen1');
-    var imag2 = document.getElementById('imagen2');
-    var imag3 = document.getElementById('imagen3');
-    var imag4 = document.getElementById('imagen4');
-    var imag5 = document.getElementById('imagen5');
-
     var seleccionado = document.querySelector('input[name=opcion]:checked');
+
     if (!seleccionado) return;
 
     var valor = seleccionado.value;
 
-    switch (valor) {
-        case "A":
-            if (respuesta == "A") {
-                imag1.src = 'img/buena.png';
-                buenas();
-            } else {
-                imag1.src = 'img/mala.png';
-                malas();
-            }
-            break;
+    // Limpiar colores anteriores
+    var tarjetas = document.querySelectorAll('.opcion-card');
 
-        case "B":
-            if (respuesta == "B") {
-                imag2.src = 'img/buena.png';
-                buenas();
-            } else {
-                imag2.src = 'img/mala.png';
-                malas();
-            }
-            break;
+    tarjetas.forEach(function(tarjeta) {
+        tarjeta.classList.remove(
+            'respuesta-correcta',
+            'respuesta-incorrecta'
+        );
+    });
 
-        case "C":
-            if (respuesta == "C") {
-                imag3.src = 'img/buena.png';
-                buenas();
-            } else {
-                imag3.src = 'img/mala.png';
-                malas();
-            }
-            break;
+    // Tarjeta de la alternativa seleccionada
+    var tarjetaSeleccionada = seleccionado.closest('.opcion-card');
 
-        case "D":
-            if (respuesta == "D") {
-                imag4.src = 'img/buena.png';
-                buenas();
-            } else {
-                imag4.src = 'img/mala.png';
-                malas();
-            }
-            break;
+    // Identificar imagen correspondiente
+    var numeroImagen = {
+        "A": "imagen1",
+        "B": "imagen2",
+        "C": "imagen3",
+        "D": "imagen4",
+        "E": "imagen5"
+    };
 
-        case "E":
-            if (respuesta == "E") {
-                imag5.src = 'img/buena.png';
-                buenas();
-            } else {
-                imag5.src = 'img/mala.png';
-                malas();
-            }
-            break;
+    var imagen = document.getElementById(numeroImagen[valor]);
 
-        default:
-            break;
+    // =====================================
+    // RESPUESTA CORRECTA
+    // =====================================
+    if (valor === respuesta) {
+
+        if (tarjetaSeleccionada) {
+            tarjetaSeleccionada.classList.add('respuesta-correcta');
+        }
+
+        if (imagen) {
+            imagen.src = 'img/buena.png';
+        }
+
+        buenas();
+
     }
-};
 
-/* =========================================
-   SUMAR BUENAS
-========================================= */
-var buenas = function() {
-    if (bandera == "A") {
-        buena = buena + 1;
-        document.getElementById("verbuenas").innerHTML = "Buenas : " + buena;
-        bandera = "B";
+    // =====================================
+    // RESPUESTA INCORRECTA
+    // =====================================
+    else {
+
+        if (tarjetaSeleccionada) {
+            tarjetaSeleccionada.classList.add('respuesta-incorrecta');
+        }
+
+        if (imagen) {
+            imagen.src = 'img/mala.png';
+        }
+
+        malas();
     }
 };
 
