@@ -976,7 +976,7 @@ body{
     }
 
     .opcion-card{
-        grid-template-columns:64px 1fr 72px;
+        grid-template-columns:42px minmax(0, 1fr) 48px;
     }
 
     .opcion-estado{
@@ -1075,4 +1075,269 @@ body{
 .btn-salir-repaso:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 24px rgba(0,0,0,.22);
+}
+@media (max-width: 600px){
+
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .contenedor-simulador {
+        width: 100%;
+        max-width: 100%;
+        margin: 8px auto 20px;
+        padding: 0 6px 20px;
+    }
+
+    .navbar-pnp {
+        padding: 8px 10px;
+    }
+
+    .brand-pnp {
+        gap: 8px;
+    }
+
+    .brand-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .brand-logo img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .brand-lvv {
+        font-size: 1.05rem;
+    }
+
+    .brand-texto small {
+        font-size: .72rem;
+    }
+
+    .header-lema {
+        font-size: .75rem;
+    }
+
+    .lema-principal {
+        font-size: .8rem;
+    }
+
+    .lema-secundario {
+        font-size: .7rem;
+    }
+
+    /* PANEL DEL TEMA */
+    .panel-tema {
+        min-height: auto;
+        padding: 12px 10px;
+        margin-bottom: 10px;
+    }
+
+    .tema-lateral img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .tema-badge {
+        font-size: .85rem;
+        margin-bottom: 5px;
+    }
+
+    .tema-centro h1 {
+        font-size: 1.05rem;
+        line-height: 1.2;
+    }
+
+    .tema-centro h1 span {
+        font-size: .8rem;
+    }
+
+    /* CONTROLES */
+    .panel-controles {
+        padding: 10px;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .controles-centro {
+        gap: 7px;
+    }
+
+    .btn-pnp {
+        width: 100%;
+        min-width: 0;
+        padding: 9px 10px;
+        font-size: .85rem;
+        border-radius: 10px;
+    }
+
+    .check-texto {
+        font-size: .85rem;
+    }
+
+    .check-box {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* PROGRESO */
+    .panel-progreso {
+        padding: 10px;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .lbl-progreso {
+        font-size: .7rem;
+    }
+
+    #contadorPreguntas,
+    #porcentajePreguntas {
+        font-size: 1.15rem;
+    }
+
+    .barra-progreso {
+        height: 12px;
+    }
+
+    /* PREGUNTA */
+    .panel-pregunta {
+        padding: 12px 8px;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    #parra1 {
+        font-size: .95rem;
+        line-height: 1.35 !important;
+    }
+
+    .pregunta-texto {
+        min-height: 90px;
+        padding: 4px;
+    }
+
+    .btn-nav-pregunta {
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+    }
+
+    .texto-nav {
+        font-size: .7rem;
+    }
+
+    /* OPCIONES */
+    .opcion-card {
+        grid-template-columns: 42px minmax(0, 1fr) 48px;
+        margin-bottom: 7px;
+        border-radius: 10px;
+    }
+
+    .opcion-letra {
+        min-height: 58px;
+        font-size: 1.2rem;
+    }
+
+    .opcion-contenido {
+        min-width: 0;
+        padding: 9px 8px;
+    }
+
+    .opcion-contenido p {
+        font-size: .82rem;
+        line-height: 1.35 !important;
+        overflow-wrap: anywhere;
+    }
+
+    .opcion-radio {
+        min-height: 58px;
+    }
+
+    .opcion-radio input[type="radio"] {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* RESPUESTA */
+    .panel-respuesta {
+        padding: 12px 10px;
+        gap: 8px;
+        margin: 10px 0;
+    }
+
+    .respuesta-icono {
+        min-height: 45px;
+        font-size: 1.8rem;
+    }
+
+    .respuesta-titulo {
+        font-size: .9rem;
+    }
+
+    #parra7 {
+        font-size: .85rem;
+        line-height: 1.4 !important;
+    }
+
+    /* RESULTADOS */
+    .panel-resultados {
+        padding: 12px 10px;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .resultado-escudo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .resultado-marcadores {
+        padding: 10px 0;
+    }
+
+    .resultado-marcadores h3 {
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+    }
+
+    .marcador-item {
+        padding: 7px 4px;
+        font-size: .85rem;
+    }
+
+    .resultado-frase p {
+        font-size: .85rem;
+    }
+
+    .resultado-frase strong {
+        font-size: 1rem;
+    }
+
+    /* PANEL FINAL */
+    .panel-info-final {
+        padding: 12px 10px;
+        gap: 10px;
+    }
+
+    .info-columna h4 {
+        font-size: 1rem;
+    }
+
+    #respuesta {
+        font-size: .85rem;
+    }
+
+    .dato-estado {
+        font-size: .85rem;
+        gap: 8px;
+    }
+
+    #seleccion,
+    #verbandera {
+        font-size: 1rem;
+    }
 }
