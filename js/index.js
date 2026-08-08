@@ -45,7 +45,9 @@ function contarLineas() {
     });
 
     ultima = Math.floor(lineasNoVacias.length / 10);
-
+ /*  si hubiese lineas vacias mejor USAR
+ ultima = Math.ceil(lineasNoVacias.length / 10); 
+ */
     alert('El tema tiene ' + ultima + ' Preguntas.');
 
     console.log("Total preguntas:", ultima);
