@@ -1342,3 +1342,35 @@ body{
         font-size: 1rem;
     }
 }
+.opcion-card.respuesta-correcta {
+    background: #c8f7c5 !important;
+    border: 2px solid #39a845 !important;
+    color: #123b16 !important;
+}
+
+.opcion-card.respuesta-correcta .opcion-letra,
+.opcion-card.respuesta-correcta .opcion-contenido p {
+    color: #123b16 !important;
+}
+
+.opcion-card.respuesta-incorrecta {
+    background: #ffd0d0 !important;
+    border: 2px solid #d93030 !important;
+    color: #5a1111 !important;
+}
+
+.opcion-card.respuesta-incorrecta .opcion-letra,
+.opcion-card.respuesta-incorrecta .opcion-contenido p {
+    color: #5a1111 !important;
+}
+
+/* En celular también mantiene los colores */
+@media (max-width: 768px) {
+    .opcion-card.respuesta-correcta {
+        background: #c8f7c5 !important;
+    }
+
+    .opcion-card.respuesta-incorrecta {
+        background: #ffd0d0 !important;
+    }
+}
