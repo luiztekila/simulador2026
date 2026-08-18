@@ -303,6 +303,19 @@ var malas = function() {
     }
 };
 
+
+var buenas = function() {
+
+    if (bandera == "A") {
+
+        buena = buena + 1;
+
+        document.getElementById("verbuenas").innerHTML =
+            "Buenas : " + buena;
+
+        bandera = "B";
+    }
+};
 /* =========================================
    REPASAR SOLO PREGUNTAS MALAS
 ========================================= */
