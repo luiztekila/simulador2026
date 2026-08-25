@@ -1,0 +1,1 @@
+const BANCO_PREGUNTAS = ` 
